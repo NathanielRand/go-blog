@@ -1,0 +1,35 @@
+body {
+    background: #37474f;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Baloo Thambi 2', cursive;
+}
+
+p {
+    font-family: 'Baloo Thambi 2', cursive;
+}
+
+a {
+    font-family: 'Baloo Thambi 2', cursive;
+}
+
+.gradient {
+    background: #7F7FD5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.gradient-text {
+    background: #7F7FD5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+/* IDs */
+
+#navbar-links {
+    font-size: 2rem;
+}

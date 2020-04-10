@@ -1,1 +1,4 @@
-# go-blog
+# GoBlog
+## Boilerplate Blog in Go
+
+
