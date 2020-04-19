@@ -1,49 +1,41 @@
 {{define "yield"}}
     <div class="center">
-      <h3>Sign Up</h3>
+      <br>
+      <h3 class="gradient-text">Sign Up</h3>
+      <h5 class="gradient-text">We promise not to sell your data ;)</h5>
+      <br>
     </div>
     <div class="row">
-    {{template "signupForm"}}
+      {{template "signupForm"}}      
     </div>
+    <br><br>
   </div>
 {{end}}
 
 {{define "signupForm"}}
-  <form class="col card s12 m6 offset-m3 l4 offset-l4">
+  <form action="/signup" method="POST" class="col card card-wave s10 offset-s1 m6 offset-m3 l4 offset-l4 blue-grey darken-1">
     <div class="card-content">
+      <br>
       <div class="row">
-        <div class="input-field col s10">
-          <i class="material-icons prefix">face</i>
-          <input placeholder="Username" id="user_name" type="text" class="validate">
-          <label for="user_name">Username</label>
+        <div class="input-field col s12 m12">
+          <i class="material-icons prefix gradient-text">face</i>
+          <input placeholder="Username" id="username" name="username" type="text" class="validate gradient-text">          
         </div>        
-      </div>
+      </div>      
       <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input placeholder="First Name" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
-        </div>
-        <div class="input-field col s6">
-          <input placeholder="Last Name" id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
+        <div class="input-field col s12 m12">
+          <i class="material-icons prefix gradient-text">email</i>
+          <input placeholder="Email" id="email" name="email" type="email" class="validate gradient-text">          
         </div>
       </div>
       <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">email</i>
-          <input placeholder="Email" id="email" type="email" class="validate">
-          <label for="email">Email</label>
+        <div class="input-field col s12 m12">
+          <i class="material-icons prefix gradient-text">lock_outline</i>
+          <input placeholder="Password" id="password" name="password" type="password" class="validate gradient-text">          
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">lock_outline</i>
-          <input placeholder="Password" id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-      <a type="submit" class="waves-effect waves-light btn"><i class="material-icons right">trending_flat</i>SIGNUP</a>
+      <button type="submit" class="waves-effect waves-light btn btn-large gradient button-wave right"><i class="material-icons right">trending_flat</i>SIGNUP</button>
+      <br><br><br>
     </div>
   </form>
 {{end}}

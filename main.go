@@ -3,39 +3,11 @@ package main
 import (
 	"fmt"	
 	"net/http"
-
-	"github.com/NathanielRand/go-blog/views"
+	
 	"github.com/NathanielRand/go-blog/controllers"
 
 	"github.com/gorilla/mux"
 )
-
-var (
-	homeView *views.View
-	contactView *views.View
-	// signupView *views.View
-)
-
-
-func home(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	must(homeView.Render(w, nil))
-}
-
-func contact(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	must(contactView.Render(w, nil))
-}
-
-func faq(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-	fmt.Fprint(w, "<h1>FAQ</h1>")
-}
-
-// func signup(w http.ResponseWriter, r *http.Request) {
-// 	w.Header().Set("Content-Type", "text/html")
-// 	must(signupView.Render(w, nil))
-// }
 
 func notFound(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
@@ -46,21 +18,13 @@ func faviconHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "/favicon.ico")
 }
 
-func must(err error) {
-	if err != nil {
-		panic(err)
-	}
-}
-
 var nf http.Handler = http.HandlerFunc(notFound)
 
 func main() {
-	// Parse home template file.
-	homeView = views.NewView("materialize", "views/home.gohtml")
-	contactView = views.NewView("materialize", "views/contact.gohtml")
-	// signupView = views.NewView("materialize", "views/users/new.gohtml")
-
+	
+	// Controllers
 	usersC := controllers.NewUsers()
+	staticC := controllers.NewStatic()
 
 	// Gorilla Mux Router
 	r := mux.NewRouter()
@@ -75,12 +39,15 @@ func main() {
 	assetHandler := http.FileServer(http.Dir("./assets/"))
 	assetHandler = http.StripPrefix("/assets/", assetHandler)
 	r.PathPrefix("/assets/").Handler(assetHandler)
-
-	// Routes
-	r.HandleFunc("/", home)
-	r.HandleFunc("/contact", contact)
-	r.HandleFunc("/faq", faq)
-	r.HandleFunc("/signup", usersC.New)
+	
+	// Routes - Static
+	r.Handle("/", staticC.Home).Methods("GET")
+	r.Handle("/contact", staticC.Contact).Methods("GET")
+	r.Handle("/faq", staticC.Faq).Methods("GET")
+	
+	// Routes - Users
+	r.HandleFunc("/signup", usersC.New).Methods("GET")
+	r.HandleFunc("/signup", usersC.Create).Methods("POST")
 
 	// Start web server, listening on port 3000.
 	http.ListenAndServe(":3000", r)
