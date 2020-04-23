@@ -4,6 +4,7 @@ import (
 	"fmt"	
 	"net/http"
 	
+	"github.com/NathanielRand/go-blog/models"
 	"github.com/NathanielRand/go-blog/controllers"
 
 	"github.com/gorilla/mux"
