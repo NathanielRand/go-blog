@@ -4,7 +4,7 @@ import (
 	"bufio"
 	"fmt" 
 	"os"
-	"strings"
+	"strings"	
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/lib/pq" 
@@ -120,15 +120,14 @@ func main() {
 	// createOrder(db, user, 8800, "Fake Description #3")
 	
 
-	var user User 
-	db.Preload("Orders").First(&user) 
-	if db.Error != nil {
-		panic(db.Error) 
-	}
-	fmt.Println("Email:", user.Email) 
-	fmt.Println("Number of orders:", len(user.Orders)) 
-	fmt.Println("Orders:", user.Orders)
-
+	// var user User 
+	// db.Preload("Orders").First(&user) 
+	// if db.Error != nil {
+	// 	panic(db.Error) 
+	// }
+	// fmt.Println("Email:", user.Email) 
+	// fmt.Println("Number of orders:", len(user.Orders)) 
+	// fmt.Println("Orders:", user.Orders)
 
 }
 
